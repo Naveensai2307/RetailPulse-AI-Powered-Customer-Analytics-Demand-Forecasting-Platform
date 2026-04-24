@@ -54,7 +54,7 @@ The primary objective of this project is to build an end-to-end, MLOps-compliant
 ├── reports/                        # Centralized HTML Reports
 ├── instructions/                   # Project documentation & PDFs
 │   ├── Instructions.pdf            # Weekend task descriptions
-│   └── Zidio Data Science.pdf      # Internship curriculum
+│   └── Zidio Data Science & Analytics.pdf # Internship curriculum
 ├── scripts/                        # Utility Scripts
 │   ├── merge.py                    # Dataset merging utility
 │   └── extract_pdf.py              # PDF text extraction tool
@@ -154,6 +154,38 @@ Schema validation and quality checks are enforced throughout the pipeline.
 
 ---
 
+## 🔄 Automated Retraining (Apache Airflow)
+RetailPulse includes an automated MLOps pipeline for monthly model retraining and drift validation.
+
+### 🧩 Pipeline Architecture
+The DAG (`zidio_model_retraining_pipeline`) consists of three sequential tasks:
+1.  **Preprocess Data:** Loads the latest retail transactions and applies scaling for neural network ingestion.
+2.  **Train Model:** Retrains the LSTM neural network on fresh data and logs the new model artifact to **MLflow**.
+3.  **Generate Drift Reports:** Executes **Evidently AI** to compare the new data distribution against the reference set.
+
+### ⚙️ Setup & Execution
+To run the retraining pipeline, ensure Apache Airflow is installed and follow these steps:
+
+1.  **Initialize Airflow (if not already):**
+    ```bash
+    export AIRFLOW_HOME=$(pwd)
+    airflow db init
+    ```
+2.  **Create an Admin User:**
+    ```bash
+    airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin
+    ```
+3.  **Start the Services:**
+    ```bash
+    # Run in separate terminals or in background
+    airflow webserver --port 8080
+    airflow scheduler
+    ```
+4.  **Access the Dashboard:**
+    Open `http://localhost:8080` in your browser and trigger the `zidio_model_retraining_pipeline` DAG to start the automated workflow.
+
+---
+
 ## 📈 Methodology & Architecture
 1.  **Data Engineering:** Merged 8 disparate datasets and applied outlier removal via IQR.
 2.  **Feature Engineering:** Generated temporal features and behavioral aggregates (RFM).
@@ -175,8 +207,6 @@ Schema validation and quality checks are enforced throughout the pipeline.
 The project utilizes the **Brazilian E-Commerce Public Dataset by Olist**.
 - **Source:** [Kaggle - Olist Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 - **Scope:** 100,000 orders from 2016-2018.
-
----
 
 ---
 
