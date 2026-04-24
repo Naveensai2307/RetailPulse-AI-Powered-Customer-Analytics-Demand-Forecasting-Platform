@@ -1,0 +1,24 @@
+artifact_path: file:c:/Users/navee/Downloads/Zidio Development Intership Project1/Zidio
+  Development Intership Project/mlruns/0/models/m-48a67c0a0e23406ab57d21c575702266/artifacts
+flavors:
+  python_function:
+    config:
+      device: null
+    data: data
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pytorch
+    pickle_module_name: mlflow.pytorch.pickle_module
+    python_version: 3.13.5
+  pytorch:
+    code: null
+    model_data: data
+    pytorch_version: 2.10.0+cpu
+mlflow_version: 3.11.1
+model_id: m-48a67c0a0e23406ab57d21c575702266
+model_size_bytes: 276569
+model_uuid: m-48a67c0a0e23406ab57d21c575702266
+prompts: null
+run_id: bf285d6bd9634d7392870b6873c3bfc6
+utc_time_created: '2026-04-24 10:56:23.472924'

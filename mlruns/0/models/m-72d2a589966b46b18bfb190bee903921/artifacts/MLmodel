@@ -1,0 +1,22 @@
+artifact_path: file:c:/Users/navee/Downloads/Zidio Development Intership Project1/Zidio
+  Development Intership Project/mlruns/0/models/m-72d2a589966b46b18bfb190bee903921/artifacts
+flavors:
+  prophet:
+    code: null
+    data: model.pr
+    model_type: Prophet
+    prophet_version: 1.3.0
+  python_function:
+    data: model.pr
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.prophet
+    python_version: 3.13.5
+mlflow_version: 3.11.1
+model_id: m-72d2a589966b46b18bfb190bee903921
+model_size_bytes: 131725
+model_uuid: m-72d2a589966b46b18bfb190bee903921
+prompts: null
+run_id: 08fa9967ebb849f9bfe732f223eb29b8
+utc_time_created: '2026-04-24 14:30:11.253276'
