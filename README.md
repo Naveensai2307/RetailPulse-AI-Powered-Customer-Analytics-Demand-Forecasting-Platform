@@ -178,9 +178,6 @@ The project utilizes the **Brazilian E-Commerce Public Dataset by Olist**.
 
 ---
 
-## 📜 License
-This project is licensed under the **MIT License**.
-
 ---
 
 ## 🤝 Acknowledgments
