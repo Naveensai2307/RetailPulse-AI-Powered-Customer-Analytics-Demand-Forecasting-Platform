@@ -58,8 +58,13 @@ The primary objective of this project is to build an end-to-end, MLOps-compliant
 ├── scripts/                        # Utility Scripts
 │   ├── merge.py                    # Dataset merging utility
 │   └── extract_pdf.py              # PDF text extraction tool
+├── kubernetes/                    # K8s Orchestration Manifests
+│   ├── deployment.yaml             # 3-replica production deployment
+│   └── service.yaml                # LoadBalancer configuration
 ├── Data Science & Data Analytics.ipynb # Research, EDA & Model Training
 ├── requirements.txt                # Fully versioned dependency list
+├── Dockerfile                      # Multi-stage production build
+├── .dockerignore                   # Build context optimization
 ├── .gitignore                      # Excluded data, logs, and environments
 └── README.md                       # Comprehensive platform documentation
 ```
@@ -98,6 +103,24 @@ streamlit run dashboard/main.py
 **Alternative Command (if streamlit not in PATH):**
 ```bash
 python -m streamlit run dashboard/main.py
+```
+
+---
+
+## 🐳 Containerization & Orchestration (Week 4)
+RetailPulse is fully containerized and ready for high-availability deployment.
+
+### 1. Run with Docker
+Build the production-grade multi-stage image:
+```bash
+docker build -t retailpulse:latest .
+docker run -p 8501:8501 retailpulse:latest
+```
+
+### 2. Deploy to Kubernetes
+Apply the manifests to your cluster (includes 3 replicas and health probes):
+```bash
+kubectl apply -f kubernetes/
 ```
 
 ---
