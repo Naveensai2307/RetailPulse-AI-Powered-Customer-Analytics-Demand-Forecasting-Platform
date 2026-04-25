@@ -1,18 +1,13 @@
 # 🚀 RetailPulse: AI-Powered Customer Analytics & Demand Forecasting Platform
 
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://retailpulse-ai-powered-customer-analytics-demand-forecasting-p.streamlit.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ---
 
 ## 📝 Project Description
 **RetailPulse** is a state-of-the-art, production-grade AI ecosystem developed for the retail industry. This platform addresses the critical need for data-driven decision-making by transforming raw transactional datasets into high-fidelity business intelligence. By integrating **Deep Learning (LSTM)**, **Statistical Forecasting (Prophet)**, and **Behavioral Clustering (K-Means)**, RetailPulse provides a 360-degree view of retail health—ranging from forecasting future sales surges to identifying individual customer churn risks.
-
----
-
-## 🎯 Project Objective
-The primary objective of this project is to build an end-to-end, MLOps-compliant platform that empowers retail managers to:
-- **Minimize Forecasting Error:** Achieve a **MAPE of 10.87%** using hybrid ensemble modeling.
-- **Optimize Customer Retention:** Identify churn risk with **100% Accuracy** on test data.
-- **Drive Operational Efficiency:** Automate inventory reorder points for over **32,000 products**.
-- **Ensure Data Reliability:** Implement rigorous data quality checks and performance monitoring.
 
 ---
 
@@ -25,56 +20,37 @@ The primary objective of this project is to build an end-to-end, MLOps-compliant
 | **Machine Learning** | XGBoost, Scikit-learn, SHAP (Explainability) |
 | **MLOps & Quality** | Evidently AI, MLflow, Great Expectations |
 | **Visualization** | Plotly (Interactive), Seaborn, Matplotlib |
+| **DevOps & CI/CD** | Docker (Multi-stage), Kubernetes, GitHub Actions |
+| **Observability** | Prometheus, Grafana |
 
 ---
 
 ## 📂 Project Structure
 ```bash
+├── .github/                       # CI/CD Workflows (GitHub Actions)
+├── .streamlit/                    # Streamlit Theme & Server Config
 ├── dashboard/                      # Production Dashboard Code
-│   ├── main.py                     # Entry point & sidebar navigation
-│   └── pages/                      # Feature modules
-│       ├── 1_SALES_ANALYTICS.py    # Revenue & geographic trends
-│       ├── 2_CUSTOMER_SEGMENTS.py  # RFM-based K-Means clustering
-│       ├── 3_DEMAND_FORECASTING.py # Hybrid AI (LSTM + Prophet)
-│       ├── 4_CHURN_PREDICTION.py   # Predictive attrition modeling
-│       ├── 5_INVENTORY_MGMT.py     # Optimization & reorder triggers
-│       ├── 6_PROJECT_SUMMARY.py    # Final executive reporting & MAPE
-│       └── 7_MONITORING.py         # MLOps data & performance drift
-├── data/                           # Processed Analytics Datasets
-│   ├── rfm_dataset.csv             # RFM analysis results
-│   ├── churn_predictions.csv       # Churn risk scores
-│   ├── cleaned_dataset.csv         # ML-ready cleaned data
-│   ├── forecast.csv                # 90-day demand forecast
-│   └── daily_sales.csv             # Time-series sales data
-├── dags/                           # Airflow ML Pipelines
-│   └── retraining_pipeline.py      # Automated retraining DAG
-├── dataset/                        # Raw E-commerce Datasets
-│   ├── olist_*.csv                 # Original Olist tables
-│   └── merged_dataset.csv          # Merged transactional record
-├── reports/                        # Centralized HTML Reports
-├── instructions/                   # Project documentation & PDFs
-│   ├── Instructions.pdf            # Weekend task descriptions
-│   └── Zidio Data Science & Analytics.pdf # Internship curriculum
+│   ├── main.py                     # Entry point & metrics exporter
+│   └── pages/                      # Feature modules (Sales, Forecasting, Monitoring)
 ├── monitoring/                    # Prometheus & Grafana Configs
 │   ├── prometheus.yml              # Scrape configuration
 │   ├── grafana-dashboard.json      # Pre-configured visualization
 │   └── docker-compose.monitoring.yml # Monitoring stack orchestration
-├── scripts/                        # Utility Scripts
-│   ├── load_test.py                # Performance validation script
-│   ├── merge.py                    # Dataset merging utility
-│   └── extract_pdf.py              # PDF text extraction tool
-├── .streamlit/                    # Streamlit UI Configuration
-│   └── config.toml                 # Theme & server settings
-├── .github/workflows/             # CI/CD Automation
-│   └── cicd.yml                    # GitHub Actions pipeline
 ├── kubernetes/                    # K8s Orchestration Manifests
 │   ├── deployment.yaml             # 3-replica production deployment
 │   └── service.yaml                # LoadBalancer configuration
-├── Data Science & Data Analytics.ipynb # Research, EDA & Model Training
+├── dags/                           # Airflow ML Pipelines
+│   └── retraining_pipeline.py      # Automated retraining DAG
+├── data/                           # Processed Analytics Datasets
+├── dataset/                        # Raw E-commerce Datasets (Olist)
+├── instructions/                   # Zidio Internship Guidelines & PDFs
+├── mlruns/                         # MLflow Experiment Tracking Database
+├── reports/                        # Centralized HTML Analysis Reports
+├── scripts/                        # Utility & Validation Scripts
+│   ├── load_test.py                # Concurrent user performance script
+│   └── merge.py                    # Dataset merging utility
 ├── requirements.txt                # Fully versioned dependency list
 ├── Dockerfile                      # Multi-stage production build
-├── .dockerignore                   # Build context optimization
-├── .gitignore                      # Excluded data, logs, and environments
 └── README.md                       # Comprehensive platform documentation
 ```
 
@@ -99,81 +75,85 @@ source venv/bin/activate
 
 ### 3. Install Dependencies
 ```bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
 ---
 
-## 🚀 Usage (How to run)
-To launch the interactive multi-page dashboard, execute the following command:
-```bash
-streamlit run dashboard/main.py
-```
-**Alternative Command (if streamlit not in PATH):**
+## 🚀 Usage (Run Commands)
+
+### 📊 Interactive Dashboard
+Launch the multi-page platform locally:
 ```bash
 python -m streamlit run dashboard/main.py
 ```
 
+### ☁️ Live Deployed Version
+Access the platform instantly on **Streamlit Community Cloud**:
+👉 **[RetailPulse Live Dashboard](https://retailpulse-ai-powered-customer-analytics-demand-forecasting-p.streamlit.app/)**
+
+### 🧪 Performance Validation
+Run the concurrency load test to verify sub-second latency:
+```bash
+python scripts/load_test.py
+```
+
 ---
 
-## 🐳 Containerization & Orchestration (Week 4)
-RetailPulse is fully containerized and ready for high-availability deployment.
+## 🐳 Production Deployment (DevOps)
 
-### 1. Run with Docker
-Build the production-grade multi-stage image:
+### 1. Docker Production Run
+Build the optimized multi-stage image:
 ```bash
 docker build -t retailpulse:latest .
 docker run -p 8501:8501 retailpulse:latest
 ```
 
-### 2. Deploy to Kubernetes
-Apply the manifests to your cluster (includes 3 replicas and health probes):
+### 2. Kubernetes Orchestration
+Deploy to a cluster with high-availability (3 replicas):
 ```bash
 kubectl apply -f kubernetes/
 ```
 
-### ⚙️ CI/CD Pipeline
-RetailPulse uses GitHub Actions for automated quality assurance and deployment:
-*   **Continuous Integration:** Automatically validates Python syntax and builds the multi-stage Docker image on every push.
-ghcr.io/${{ env.OWNER_LC }}/retailpulse:${{ github.sha }}
+### 3. Automated CI/CD
+Every push to `main` triggers a GitHub Action to build and push the production image to **GHCR (GitHub Container Registry)**.
+
+---
+
+## 📡 Monitoring & Observability (MLOps)
+RetailPulse features a dedicated observability stack for 24/7 health tracking.
+
+### Launch Prometheus & Grafana
+```bash
+docker-compose -f monitoring/docker-compose.monitoring.yml up -d
 ```
-
-### ☁️ Cloud Deployment (Streamlit Cloud)
-The platform is optimized for **Streamlit Community Cloud** for instant, reliable access:
-1.  **Deployment URL:** [RetailPulse Live Dashboard](https://retailpulse-ai-powered-customer-analytics-demand-forecasting-p.streamlit.app/)
-2.  **Configuration:** Custom **Premium White Theme** and performance settings are handled via `.streamlit/config.toml`.
-
-### 📡 Monitoring Stack (Week 4)
-Operational health and performance metrics are tracked using **Prometheus** and **Grafana**:
-1.  **Launch Stack:**
-    ```bash
-    docker-compose -f monitoring/docker-compose.monitoring.yml up -d
-    ```
-2.  **Prometheus:** Accessible at `http://localhost:9090`.
-3.  **Grafana:** Accessible at `http://localhost:3000` (Default: admin/admin). Import the `grafana-dashboard.json` for live visualization.
-
-### 🧪 Load Testing & Validation (Week 4)
-The platform has undergone rigorous performance and accuracy audits:
-1.  **Load Test Results:**
-    *   **Success Rate:** 100%
-    *   **Throughput:** 12.94 req/s
-    *   **Avg Latency:** 744ms (Optimized for Streamlit)
-2.  **Accuracy Metrics:**
-    *   **Demand Forecasting (MAPE):** **10.87%** (Exceeds target of ≤ 12%)
-    *   **Churn Prediction (AUC):** **1.0** (Perfect classification on verified test set)
+- **Prometheus:** [http://localhost:9090](http://localhost:9090) (Scrapes metrics from port 8001).
+- **Grafana:** [http://localhost:3000](http://localhost:3000) (Import `monitoring/grafana-dashboard.json`).
 
 ---
 
-## ✨ Key Features
-- **Hybrid AI Forecasting:** A sophisticated ensemble blending **Prophet** (seasonality) and **LSTM** (non-linear residuals) at a **95/5 ratio**.
-- **Automated RFM Analysis:** Real-time calculation of Recency, Frequency, and Monetary scores for every customer.
-- **XGBoost Churn Risk:** Classifies customers into risk tiers with interpretable **SHAP** explanations.
-- **MLOps Integration:** Complete lifecycle tracking via **MLflow** and drift detection via **Evidently AI**.
-- **Dynamic Inventory Triggers:** Automated "Reorder Point" and "Safety Stock" alerts based on demand volatility.
+## 🔄 MLOps Operations
+
+### 1. Experiment Tracking (MLflow)
+View all model training logs and performance metrics:
+```bash
+mlflow ui
+```
+*Access at: `http://localhost:5000`*
+
+### 2. Automated Retraining (Apache Airflow)
+Set up the retraining pipeline (WSL/Ubuntu recommended):
+```bash
+export AIRFLOW_HOME=$(pwd)
+airflow db init
+airflow scheduler & airflow webserver --port 8080
+```
+*Trigger the `zidio_model_retraining_pipeline` at `http://localhost:8080`*
 
 ---
 
-## 📊 Complete Results & Metrics
+## 📊 Performance & Accuracy Metrics
 
 ### 1. Forecasting Performance
 | Model | MAPE (%) | Status |
@@ -189,91 +169,32 @@ The platform has undergone rigorous performance and accuracy audits:
 | **Loyal Customers** | Tier 2 | 269 Days | $349.36 |
 | **New Customers** | Tier 0 | 91 Days | $110.44 |
 
-### 3. Churn Prediction Performance
-- **Model:** XGBoost Classifier
-- **Accuracy:** **100%**
-- **AUC-ROC:** **1.0**
-- **F1-Score:** **1.0**
+### 3. Predictive Performance
+- **Churn Model:** XGBoost Classifier
+- **Churn Accuracy:** **100%** | **AUC-ROC:** **1.0**
+- **Load Test Success:** **100%** | **Avg Latency:** **744ms**
 
 ---
 
-## 🧪 MLOps & Monitoring
-
-### 1. Data Drift & Model Monitoring (Evidently AI)
-We utilize **Evidently AI** to ensure model reliability. The platform generates reports for:
-- **Data Drift:** Detects shifts in feature distributions.
-- **Target Drift:** Monitors changes in the revenue distribution over time.
-- **Model Performance:** Tracks regression and classification metrics.
-
-### 2. Experiment Tracking (MLflow)
-Every training run is logged in **MLflow**. To view the dashboard:
-```bash
-mlflow ui
-```
-
-### 3. Data Integrity (Great Expectations)
-Schema validation and quality checks are enforced throughout the pipeline.
-
----
-
-## 🔄 Automated Retraining (Apache Airflow)
-RetailPulse includes an automated MLOps pipeline for monthly model retraining and drift validation.
-
-### 🧩 Pipeline Architecture
-The DAG (`zidio_model_retraining_pipeline`) consists of three sequential tasks:
-1.  **Preprocess Data:** Loads the latest retail transactions and applies scaling for neural network ingestion.
-2.  **Train Model:** Retrains the LSTM neural network on fresh data and logs the new model artifact to **MLflow**.
-3.  **Generate Drift Reports:** Executes **Evidently AI** to compare the new data distribution against the reference set.
-
-### ⚙️ Setup & Execution
-To run the retraining pipeline, ensure Apache Airflow is installed and follow these steps:
-
-1.  **Initialize Airflow (if not already):**
-    ```bash
-    export AIRFLOW_HOME=$(pwd)
-    airflow db init
-    ```
-2.  **Create an Admin User:**
-    ```bash
-    airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin
-    ```
-3.  **Start the Services:**
-    ```bash
-    # Run in separate terminals or in background
-    airflow webserver --port 8080
-    airflow scheduler
-    ```
-4.  **Access the Dashboard:**
-    Open `http://localhost:8080` in your browser and trigger the `zidio_model_retraining_pipeline` DAG to start the automated workflow.
-
----
-
-## 📈 Methodology & Architecture
-1.  **Data Engineering:** Merged 8 disparate datasets and applied outlier removal via IQR.
-2.  **Feature Engineering:** Generated temporal features and behavioral aggregates (RFM).
-3.  **Hybrid Modeling:** Trained LSTM via PyTorch Lightning (150 epochs) and Prophet on daily revenue.
-4.  **Explainability:** Integrated SHAP to identify that **Recency** is the #1 driver for customer churn.
-5.  **Audit:** Verified parity between Jupyter experimental results and Streamlit production logic.
-
----
-
-## 🤖 Model Details
-- **LSTM:** Recurrent Neural Network architecture with a 30-day window.
-- **Prophet:** Additive model capturing weekly and yearly seasonality.
-- **XGBoost:** Gradient-boosted decision trees for binary churn classification.
-- **K-Means:** Optimized using the Elbow Method for granular customer clustering.
+## ✨ Key Technical Features
+- **Hybrid AI Forecasting:** Ensemble blending **Prophet** (seasonality) and **LSTM** (neural residuals).
+- **Automated RFM Analysis:** Real-time customer behavioral clustering.
+- **Explainable AI (XAI):** Integrated **SHAP** values for churn driver transparency.
+- **MLOps Drift Detection:** **Evidently AI** integration for statistical data validation.
+- **Dynamic Inventory Triggers:** Automated reorder point calculation based on forecast volatility.
 
 ---
 
 ## 📂 Dataset Information
 The project utilizes the **Brazilian E-Commerce Public Dataset by Olist**.
-- **Source:** [Kaggle - Olist Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 - **Scope:** 100,000 orders from 2016-2018.
+- **Source:** [Kaggle - Olist Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
 ---
 
 ## 🤝 Acknowledgments
 - **Zidio Development:** Internship framework and retail analytics use case.
-- **Olist:** Providing the comprehensive open-source dataset.
+- **Olist:** Providing the comprehensive transactional dataset.
 
 ---
+
