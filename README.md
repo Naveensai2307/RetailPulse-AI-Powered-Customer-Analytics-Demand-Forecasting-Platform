@@ -58,6 +58,8 @@ The primary objective of this project is to build an end-to-end, MLOps-compliant
 ├── scripts/                        # Utility Scripts
 │   ├── merge.py                    # Dataset merging utility
 │   └── extract_pdf.py              # PDF text extraction tool
+├── .github/workflows/             # CI/CD Automation
+│   └── cicd.yml                    # GitHub Actions pipeline
 ├── kubernetes/                    # K8s Orchestration Manifests
 │   ├── deployment.yaml             # 3-replica production deployment
 │   └── service.yaml                # LoadBalancer configuration
@@ -122,6 +124,11 @@ Apply the manifests to your cluster (includes 3 replicas and health probes):
 ```bash
 kubectl apply -f kubernetes/
 ```
+
+### ⚙️ CI/CD Pipeline
+RetailPulse uses GitHub Actions for automated quality assurance and deployment:
+*   **Continuous Integration:** Automatically validates Python syntax and builds the multi-stage Docker image on every push.
+*   **Continuous Deployment:** Verified images are automatically pushed to the **GitHub Container Registry (GHCR)** for production readiness.
 
 ---
 
