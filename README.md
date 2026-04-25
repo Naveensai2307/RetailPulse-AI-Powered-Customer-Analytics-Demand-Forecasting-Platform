@@ -55,6 +55,10 @@ The primary objective of this project is to build an end-to-end, MLOps-compliant
 ├── instructions/                   # Project documentation & PDFs
 │   ├── Instructions.pdf            # Weekend task descriptions
 │   └── Zidio Data Science & Analytics.pdf # Internship curriculum
+├── monitoring/                    # Prometheus & Grafana Configs
+│   ├── prometheus.yml              # Scrape configuration
+│   ├── grafana-dashboard.json      # Pre-configured visualization
+│   └── docker-compose.monitoring.yml # Monitoring stack orchestration
 ├── scripts/                        # Utility Scripts
 │   ├── merge.py                    # Dataset merging utility
 │   └── extract_pdf.py              # PDF text extraction tool
@@ -137,6 +141,15 @@ ghcr.io/${{ env.OWNER_LC }}/retailpulse:${{ github.sha }}
 The platform is optimized for **Streamlit Community Cloud** for instant, reliable access:
 1.  **Deployment URL:** [RetailPulse Live Dashboard](https://retailpulse-ai-powered-customer-analytics-demand-forecasting-p.streamlit.app/)
 2.  **Configuration:** Custom **Premium White Theme** and performance settings are handled via `.streamlit/config.toml`.
+
+### 📡 Monitoring Stack (Week 4)
+Operational health and performance metrics are tracked using **Prometheus** and **Grafana**:
+1.  **Launch Stack:**
+    ```bash
+    docker-compose -f monitoring/docker-compose.monitoring.yml up -d
+    ```
+2.  **Prometheus:** Accessible at `http://localhost:9090`.
+3.  **Grafana:** Accessible at `http://localhost:3000` (Default: admin/admin). Import the `grafana-dashboard.json` for live visualization.
 
 ---
 
