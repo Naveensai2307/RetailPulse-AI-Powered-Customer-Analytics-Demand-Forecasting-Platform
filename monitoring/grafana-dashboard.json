@@ -95,7 +95,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "rate(http_requests_total[5m])",
+          "expr": "rate(retailpulse_requests_total[5m])",
           "format": "time_series",
           "range": true,
           "refId": "A"

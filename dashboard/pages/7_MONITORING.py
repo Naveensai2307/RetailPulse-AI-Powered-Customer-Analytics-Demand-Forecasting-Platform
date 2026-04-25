@@ -6,8 +6,17 @@ import numpy as np
 if not hasattr(np, "float_"):
     np.float_ = np.float64
 
-from evidently.report import Report
-from evidently.metric_preset import DataDriftPreset, TargetDriftPreset
+try:
+    from evidently.report import Report
+    from evidently.metric_preset import DataDriftPreset, TargetDriftPreset
+except ImportError:
+    # Fallback for alternative or legacy version structures
+    try:
+        from evidently import Report
+        from evidently.metric_preset import DataDriftPreset, TargetDriftPreset
+    except ImportError:
+        st.error("⚠️ Monitoring Engine Error: 'evidently' library components not found. Please verify installation.")
+        st.stop()
 import streamlit.components.v1 as components
 import plotly.graph_objects as go
 import plotly.express as px

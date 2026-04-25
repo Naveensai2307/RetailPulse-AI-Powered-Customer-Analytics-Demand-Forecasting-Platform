@@ -2,6 +2,30 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+from prometheus_client import start_http_server, Counter, Gauge
+import threading
+
+# -------------------------------------------------
+# MONITORING SETUP
+# -------------------------------------------------
+@st.cache_resource
+def start_metrics_server():
+    try:
+        start_http_server(8001)
+        print("Prometheus metrics server started on port 8001")
+    except Exception as e:
+        print(f"Metrics server error: {e}")
+
+# Start the server once
+start_metrics_server()
+
+# Define some basic metrics (Cached to prevent duplication errors)
+@st.cache_resource
+def get_request_counter():
+    return Counter('retailpulse_requests_total', 'Total number of dashboard visits')
+
+REQUEST_COUNT = get_request_counter()
+REQUEST_COUNT.inc() # Increment on load
 
 # -------------------------------------------------
 # PAGE CONFIGURATION
