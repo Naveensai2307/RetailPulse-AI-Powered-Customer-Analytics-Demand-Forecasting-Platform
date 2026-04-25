@@ -136,7 +136,7 @@ ghcr.io/${{ env.OWNER_LC }}/retailpulse:${{ github.sha }}
 ### ☁️ Cloud Deployment (Streamlit Cloud)
 The platform is optimized for **Streamlit Community Cloud** for instant, reliable access:
 1.  **Deployment URL:** [RetailPulse Live Dashboard](https://retailpulse-ai-powered-customer-analytics-demand-forecasting-p.streamlit.app/)
-2.  **Configuration:** Custom theme and performance settings are handled via `.streamlit/config.toml`.
+2.  **Configuration:** Custom **Premium White Theme** and performance settings are handled via `.streamlit/config.toml`.
 
 ---
 
