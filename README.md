@@ -58,6 +58,8 @@ The primary objective of this project is to build an end-to-end, MLOps-compliant
 ├── scripts/                        # Utility Scripts
 │   ├── merge.py                    # Dataset merging utility
 │   └── extract_pdf.py              # PDF text extraction tool
+├── .streamlit/                    # Streamlit UI Configuration
+│   └── config.toml                 # Theme & server settings
 ├── .github/workflows/             # CI/CD Automation
 │   └── cicd.yml                    # GitHub Actions pipeline
 ├── kubernetes/                    # K8s Orchestration Manifests
@@ -128,7 +130,13 @@ kubectl apply -f kubernetes/
 ### ⚙️ CI/CD Pipeline
 RetailPulse uses GitHub Actions for automated quality assurance and deployment:
 *   **Continuous Integration:** Automatically validates Python syntax and builds the multi-stage Docker image on every push.
-*   **Continuous Deployment:** Verified images are automatically pushed to the **GitHub Container Registry (GHCR)** for production readiness.
+ghcr.io/${{ env.OWNER_LC }}/retailpulse:${{ github.sha }}
+```
+
+### ☁️ Cloud Deployment (Streamlit Cloud)
+The platform is optimized for **Streamlit Community Cloud** for instant, reliable access:
+1.  **Deployment URL:** [RetailPulse Dashboard](https://share.streamlit.io/Naveensai2307/RetailPulse-AI-Powered-Customer-Analytics-Demand-Forecasting-Platform/main/dashboard/main.py)
+2.  **Configuration:** Custom theme and performance settings are handled via `.streamlit/config.toml`.
 
 ---
 
