@@ -15,7 +15,7 @@
 | :--- | :--- |
 | **Language & Core** | Python 3.12+, NumPy, Pandas |
 | **User Interface** | Streamlit (Multi-page Dashboard Architecture) |
-| **Forecasting Engine** | Facebook Prophet, PyTorch (LSTM), PyTorch Lightning |
+| **Forecasting Engine** | Prophet, PyTorch (LSTM), PyTorch Lightning |
 | **Machine Learning** | XGBoost, Scikit-learn, SHAP (Explainability) |
 | **MLOps & Quality** | Evidently AI, MLflow, Great Expectations |
 | **Visualization** | Plotly (Interactive), Seaborn, Matplotlib |
