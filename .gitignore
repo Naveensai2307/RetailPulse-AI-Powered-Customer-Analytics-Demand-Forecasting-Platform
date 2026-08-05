@@ -1,0 +1,25 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Local environment files
+.env
+.env.*
+venv/
+ENV/
+.venv/
+
+# Dataset and ML artifacts
+dataset/
+mlruns/
+
+# Streamlit cache and temp files
+*.cache
+
+# OS files
+.DS_Store
+Thumbs.db
