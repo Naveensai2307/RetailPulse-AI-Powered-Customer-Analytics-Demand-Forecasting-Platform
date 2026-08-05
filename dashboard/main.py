@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-from prometheus_client import start_http_server, Counter, Gauge
 import threading
 
 # -------------------------------------------------
@@ -11,26 +10,34 @@ import threading
 # -------------------------------------------------
 METRICS_ENABLED = os.environ.get("PROMETHEUS_METRICS_ENABLED", "false").lower() in ("true", "1", "yes")
 
-@st.cache_resource
-def start_metrics_server():
-    if not METRICS_ENABLED:
-        return
-    try:
-        start_http_server(8001)
-        print("Prometheus metrics server started on port 8001")
-    except Exception as e:
-        print(f"Metrics server error: {e}")
+if METRICS_ENABLED:
+    from prometheus_client import start_http_server, Counter
 
-# Start the server once
-start_metrics_server()
+    @st.cache_resource
+    def start_metrics_server():
+        try:
+            start_http_server(8001)
+            print("Prometheus metrics server started on port 8001")
+        except Exception as e:
+                print(f"Metrics server error: {e}")
 
-# Define some basic metrics (Cached to prevent duplication errors)
-@st.cache_resource
-def get_request_counter():
-    return Counter('retailpulse_requests_total', 'Total number of dashboard visits')
+    @st.cache_resource
+    def get_request_counter():
+        return Counter('retailpulse_requests_total', 'Total number of dashboard visits')
 
-REQUEST_COUNT = get_request_counter()
-REQUEST_COUNT.inc() # Increment on load
+    start_metrics_server()
+    REQUEST_COUNT = get_request_counter()
+    REQUEST_COUNT.inc()  # Increment on load
+else:
+    @st.cache_resource
+    def start_metrics_server():
+            return
+
+    def get_request_counter():
+        return None
+
+    start_metrics_server()
+    REQUEST_COUNT = None
 
 # -------------------------------------------------
 # PAGE CONFIGURATION
