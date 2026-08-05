@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -8,8 +9,12 @@ import threading
 # -------------------------------------------------
 # MONITORING SETUP
 # -------------------------------------------------
+METRICS_ENABLED = os.environ.get("PROMETHEUS_METRICS_ENABLED", "false").lower() in ("true", "1", "yes")
+
 @st.cache_resource
 def start_metrics_server():
+    if not METRICS_ENABLED:
+        return
     try:
         start_http_server(8001)
         print("Prometheus metrics server started on port 8001")
